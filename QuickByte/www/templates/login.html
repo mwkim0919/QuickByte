@@ -1,0 +1,23 @@
+<ion-nav-header class="bar-header bar-positive bar">
+  <h1 class="qb-title title">Qu<i class="ion-fork"></i>ckByte</h1>
+</ion-nav-header>
+<ion-view hide-nav-bar="true">
+    <ion-content padding="true" class="has-header bkg-img">
+        <form>
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input id="username-input" type="text" placeholder="enter your username..." ng-model="data.username">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input id="password-input" type="password" placeholder="enter your password..." ng-model="data.password">
+                </label>
+            </ion-list>
+            <button class="button button-block button-positive" ng-controller="UserCtrl" ng-click="signIn()">Sign in</button>
+            <button class="button button-balanced button-block" ng-controller="UserCtrl" ng-click="gosignUp()">Sign up</button>
+            <p style="text-align: center; color: black; font-style: italic; font-size: 18px; text-rendering: optimizeLegibility;">~ Or ~</p>
+            <button class="fb-button button-block" ng-controller="FacebookCtrl" ng-click="facebookLogin()">Use Facebook</button>
+        </form>
+    </ion-content>
+</ion-view>

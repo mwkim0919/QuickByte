@@ -1,0 +1,232 @@
+/* Empty. Add your own CSS if you like */
+/*------- Global CSS rules ----------*/
+html {
+  height: 100%;
+}
+body {
+  background-color: #EBF0FF;
+  height: 100%;
+}
+input {
+	margin: 10px;
+}
+label.item.item-input {
+	margin: 10px;
+}
+.ion-red-icon {
+  color: red;
+}
+.ion-green-icon {
+  color: green;
+}
+.hidden {
+  display: none;
+}
+.tabs-hide .tabs {
+    display: none;
+}
+.col-left {
+  text-align: left;
+}
+.col-right {
+  text-align: right;
+}
+.col-center {
+  text-align: center;
+}
+input.error {
+	border: thin solid red;
+}
+span.error-msg {
+	color: red;
+	font-size: 11px;
+	font-style: italic;
+}
+/*------- Header CSS ----------*/
+.popup .popup-head {
+	background-color: #387ef5;
+}
+.popup .popup-title {
+	color: white;
+}
+.qb-header-style {
+	background-color: #387ef5;
+}
+.qb-header-style h1.title {
+	color: white;
+}
+/*------- Header CSS ----------*/
+.bar-header {
+  opacity: 0.8;
+  text-align: center;
+}
+.bar-header .qb-title {
+  font-size: 25px;
+  color: #FFFFFF; /*fc*/
+  font-family:'Pacifico'; /*ff*/
+}
+.bar-header .header-options {
+  position: absolute;
+  right: 0;
+}
+/*------- Options Menu CSS ----------*/
+.popover .button-full {
+  text-align: left;
+}
+/*------- Tabs CSS ----------*/
+.tab-nav .tab-item {
+  color: #FFFFFF; /*fc*/
+  max-width: 100%;
+}
+.tab-nav .tab-item.tab-item-active {
+  color: #FFFFFF;
+  background-color: #0c63ee;
+}
+.bkg-img {
+  background: url(/../img/tacos-and-kimchi.jpg) no-repeat center center fixed;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+}
+.no-tabs {
+  bottom: 0px;
+}
+ion-content {
+	height: 100%;
+}
+
+/*------- Restaurants Page CSS ----------*/
+.restaurant-results-error {
+  text-align: center;
+  color: black;
+}
+/*------- Restaurant Details Page CSS ----------*/
+.restaurant-label {
+  font-weight: bold;
+}
+/*------- Comments Page CSS ----------*/
+#comment-create-box {
+  margin-top: 7px;
+  margin-bottom: 4px;
+  position: fixed;
+  top: 45px;
+  left: 0px;
+  right: 0px;
+}
+.comment-timestamp {
+  font-style: italic;
+  font-size: 11px;
+  float: right;
+}
+/*Overide Ionic's default text wrapping so we see the full comment*/
+ion-item p.comment-content {
+  white-space: normal;
+}
+ion-item h2.comment-user {
+  margin-top: 13px;
+  font-weight: bold;
+}
+#comment-list-content .scroll {
+	margin-top: 80px;
+}
+/*------- Maps Page CSS ----------*/
+.map {
+	height: 100%;
+	width: 100%
+}
+/*------- Profile Page CSS ----------*/
+.account-label {
+  font-weight: bold;
+}
+
+#profile-username {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#profile-description {
+  font-size: 15px;
+  color: #888;
+}
+
+#profile-description a {
+  color: #888;
+}
+
+#profile-image {
+  display: block;
+  border-radius: 100px;
+  border: 1px solid #fff;
+  width: 128px;
+  height: 128px;
+  margin: 10px auto;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+}
+
+#camera-button {
+  font-size: 30px;
+  display: block;
+  margin: 0px auto;
+}
+
+.fb-button {
+  padding: 10px;
+  background-color: #3a5795;
+  color: white;
+  border: none;
+}
+
+.fb-button:active {
+  background-color: #637bad;
+}
+
+.list-item-content {
+  padding: 5px;
+}
+
+.list-item {
+  color: #666666;
+}
+
+.post {
+  color: #444;
+}
+
+.post-time {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 11px;
+  color: #888;
+}
+
+.post-profile-image {
+  display: inline-block;
+  vertical-align: top;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+.post-options {
+  position: absolute;
+  font-size: 16px;
+  right: 5px;
+  bottom: 5px;
+  color: #888;
+}
+
+
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  box-shadow: 0px 0px 1px rgba(0,0,0,0.5);
+  border-radius: 2px;
+  left: 25%;
+  font-size: 12px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 9px;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  padding-left: 10px;
+}

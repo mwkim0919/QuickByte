@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>QuickByte</title>
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Sansita+One|Press+Start+2P' rel='stylesheet' type='text/css'>
+
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet"> -->
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="js/ng-cordova.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+  <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="js/oauth.js"></script>
+  <script type="text/javascript" src="js/sha1.js"></script>
+
+  <!-- your app's js -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUdVAgufardn6byrFGFEFo1onraz-0tVU"></script>
+  <script src="js/map.js"></script>
+  <script src="js/helper.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+
+  <script type="text/javascript" src="js/yelpAPI.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+
+
+</head>
+<body ng-app="starter" ng-controller="MainCtrl">
+  <ion-side-menus>
+
+    <ion-side-menu-content drag-content="false">
+      <ion-nav-view>
+        <!--
+        The views will be rendered in the <ion-nav-view> directive below
+        Templates are in the /templates folder (but you could also
+        have templates inline in this html file if you'd like).-->
+      </ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="right">
+      <ion-header-bar class="qb-header-style">
+        <h1 class="title">Settings</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list">
+          <div class="item item-divider">Search Radius:</div>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Distance
+            </div>
+            <select id="distance" name="distance" onchange="changedSearchParams = true">
+              <option value="200" selected>200 m</option>
+              <option value="500">500 m</option>
+              <option value="1000">1 km</option>
+              <option value="5000">5 km</option>
+              <option value="10000">10 km</option>
+            </select>
+          </label>
+          <div class="item item-divider">Filter by:</div>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Cuisine
+            </div>
+            <select id="cuisine" name="cuisine" onchange="changedSearchParams = true">
+              <option value="none" selected>None</option>
+              <option value="african">African</option>
+              <option value="asian">Asian</option>
+              <option value="european">European</option>
+              <option value="mideast">Middle-East</option>
+              <option value="namerican">North American</option>
+              <option value="oceanian">Oceanian</option>
+              <option value="samerican">South American</option>
+            </select>
+          </label>
+          <div class="item item-divider">Sort by:</div>
+          <label class="item item-radio">
+            <input type="radio" name="sort-radio" sort-property="distance" checked="true" onchange="changedSearchParams = true">
+            <div class="item-content">
+              Distance
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-radio">
+            <input type="radio" name="sort-radio" sort-property="-rating" onchange="changedSearchParams = true">
+            <div class="item-content">
+              Rating
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <div class="item item-divider">User Settings:</div>
+          <ion-item ng-controller="QbSettingsCtrl" ng-click="goToProfile()"> My Profile</ion-item>
+          <ion-item ng-controller="QbSettingsCtrl" ng-click="doLogoutAction()"> Logout   <icon class="icon ion-power"></icon></ion-item>
+        </div>
+      </ion-content>
+    </ion-side-menu>
+
+  </ion-side-menus>
+
+    <!-- Facebook Stuff I might be messing up :D -->
+<script>
+  window.fbAsyncInit = function() {
+   //alert("FACEBOOK STUFF");
+    Parse.FacebookUtils.init({
+      appId      : '1156583164369186',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+  <!-- I HAD THE EST OF INTENTIONS! -->
+</body>
+</html>

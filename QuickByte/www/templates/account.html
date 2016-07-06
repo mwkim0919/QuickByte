@@ -1,0 +1,72 @@
+<ion-nav-header class="bar-header bar-positive bar">
+  <button id="back-button" class="button button-icon icon ion-arrow-left-c" ng-click="goBack()"></button>
+  <h1 class="qb-title title">Qu<i class="ion-fork"></i>ckByte</h1>
+  <div class="header-options">
+    <button id="qb-settings" class="button button-icon icon ion-navicon-round" ng-controller="QbSettingsCtrl" ng-click="toggleRight($event)"></button>
+  </div>
+</ion-nav-header>
+<ion-content padding="true" class="has-header no-tabs bkg-img">
+  <ion-item class=".no-profile-info card" ng-if="user == null || user.get('username') == null" style="margin-top: 5px; margin-bottom: 4px; text-align: center; padding: 10px" >
+    <p></p><i class="ion-sad-outline"></i>
+  </ion-item>
+  <div ng-if="user && user.get('username')">
+    <div class="col col-center">
+      <img id="profile-image" src="{{getUserImgUrl(user)}}">
+      <button id="camera-button" class="button button-icon ion-camera" ng-if="isOwnProfile" ng-click="editPicture()"></button>
+      <button class="button button-balanced icon-right ion-happy-outline" ng-if="!isOwnProfile && !already_following" ng-click="follow(user)">Follow</button>
+      <button class="button button-assertive icon-right ion-sad-outline" ng-if="!isOwnProfile && already_following" ng-click="unfollow(user)">Unfollow</button>
+    </div>
+    <div class="item">
+      <div class="row row-center">
+        <div class="col col-left col-75" ng-if="isOwnProfile">
+          <h2 id="profile-username">{{ user.get('username') }}</h2>
+        </div>
+        <div style="width: 100%; display: block; text-align: center" ng-if="!isOwnProfile">
+          <h2 id="profile-username">{{ user.get('username') }}</h2>
+        </div>
+        <div class="col col-right" ng-if="isOwnProfile">
+          <button class="button button-small button-positive icon ion-edit" ng-click="editUsername()"></button>
+        </div>
+      </div>
+      <div class="row row-center" ng-if="isOwnProfile" id="profile-email" style="margin-top: 5px">
+        <div class="col col-left col-75">
+          <label class="account-label">Email: </label> {{ user.get('email') }}
+        </div>
+        <div class="col col-right">
+          <button class="button button-small button-positive icon ion-edit" ng-click="editEmail()" ></button>
+        </div>
+      </div>
+      <div class="row row-center" ng-if="isOwnProfile" id="profile-password" style="margin-top: 5px">
+        <div class="col col-left col-75">
+          <label class="account-label">Password: </label> *********
+        </div>
+        <div class="col col-right">
+          <button class="button button-small button-positive icon ion-edit" ng-click="editPassword()" ></button>
+        </div>
+      </div>
+      <div class="row row-center" style="margin-top: 5px">
+        <div class="col col-center">
+          <button class="button button-full button-positive" ng-click="goToFollowers(user.id)">Followers ({{ num_followers }})</button>
+        </div>
+        <div class="col col-center">
+          <button class="button button-full button-positive" ng-click="goToFollowing(user.id)">Following ({{ num_following  }})</button>
+        </div>
+      </div>
+      <button class="fb-button button-full" ng-controller="FacebookCtrl" ng-click="linkFacebook()" ng-if="isOwnProfile && !isLinked">Link to Facebook</button>
+    </div>
+  </div>
+  <div class="card" ng-if="user && user.get('username')">
+    <div class="item item-divider item-positive">
+      <h2 style="text-align: center; font-weight: bold; color: white">Recent Comments</h2>
+    </div>
+    <ion-list>
+      <ion-item class="item-text-wrap" ng-if="recentComments == null || recentComments.length <= 0" style="margin-top: 5px; margin-bottom: 4px; text-align: center; padding: 10px" >
+        <p>No recent activity</p>
+        <i class="ion-sad-outline"></i>
+      </ion-item>
+      <ion-item class="item-button-right" ng-repeat="comment in recentComments" style="margin-top: 5px; margin-bottom: 4px" >
+          <p>{{comment.get('text')}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

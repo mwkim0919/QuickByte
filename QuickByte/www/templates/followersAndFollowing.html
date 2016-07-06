@@ -1,0 +1,23 @@
+<ion-nav-header class="bar-header bar-positive bar">
+  <button id="back-button" class="button button-icon icon ion-arrow-left-c" ng-click="goBack()"></button>
+  <h1 class="qb-title title">Qu<i class="ion-fork"></i>ckByte</h1>
+  <div class="header-options">
+    <button id="qb-settings" class="button button-icon icon ion-navicon-round" ng-controller="QbSettingsCtrl" ng-click="toggleRight($event)"></button>
+  </div>
+</ion-nav-header>
+<ion-view view-title="">
+  <ion-content padding="true" class="has-header no-tabs bkg-img">
+    <ion-list>
+      <ion-item class="item-text-wrap" ng-if="users == null || users.length <= 0" style="margin-top: 5px; margin-bottom: 4px; text-align: center; padding: 10px" >
+        <p>No users to display</p>
+        <i class="ion-sad-outline"></i>
+      </ion-item>
+      <ion-item class="item-avatar item-button-right" ng-repeat="user in users" style="margin-top: 5px; margin-bottom: 4px" >
+        <img src="{{getUserImgUrl(user) }}"></img>
+        <div ng-click="goToProfile(user.id)">
+          <h2><b>{{user.get('username')}}</b></h2>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

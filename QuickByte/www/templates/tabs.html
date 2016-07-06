@@ -1,0 +1,16 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-bottom tabs-color-active-light" ng-class="$root.tabsHidden">
+  <!-- Restaurant List Tab -->
+  <ion-tab title="Restaurants" icon-on="ion-ios-list-outline" icon-off="ion-ios-list-outline" ng-click="goRestaurants()">
+    <ion-nav-view name="tab-restaurants"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Restaurant List Map Tab -->
+  <ion-tab title="Map" icon-on="ion-earth" icon-off="ion-earth" ng-click="goMap()">
+    <ion-nav-view name="tab-map"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

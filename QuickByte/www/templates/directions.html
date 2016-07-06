@@ -1,0 +1,21 @@
+<ion-nav-header class="bar-header bar-positive bar">
+  <button id="back-button" class="button button-icon icon ion-arrow-left-c" ng-click="goBack()"></button>
+	<h1 class="qb-title title">Qu<i class="ion-fork"></i>ckByte</h1>
+	<div class="header-options">
+		<button id="qb-settings" class="button button-icon icon ion-navicon-round" ng-controller="QbSettingsCtrl" ng-click="toggleRight($event)"></button>
+	</div>
+</ion-nav-header>
+<ion-view hide-nav-bar="true">
+ <ion-content scroll="false" class="has-header no-tabs">
+   <div id="floating-panel">
+    <b>Traveling Mode:  </b>
+    <select id="mode">
+      <option value="WALKING">Walking</option>
+      <option value="DRIVING">Driving</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    </div>
+   <div id="mapDirections"class="map"></div>
+ </ion-content>
+</ion-view>

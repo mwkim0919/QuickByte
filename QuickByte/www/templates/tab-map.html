@@ -1,0 +1,11 @@
+<ion-nav-header class="bar-header bar-positive bar">
+  <h1 class="qb-title title">Qu<i class="ion-fork"></i>ckByte</h1>
+  <div class="header-options">
+    <button id="qb-settings" class="button button-icon icon ion-navicon-round" ng-controller="QbSettingsCtrl" ng-click="toggleRight($event)"></button>
+  </div>
+</ion-nav-header>
+<ion-view hide-nav-bar="true">
+  <ion-content scroll="false" class="has-header">
+    <div id="map" data-tap-disabled="true" class="map"></div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-nav-header class="bar-header bar-positive bar">
+  <button id="back-button" class="button button-icon icon ion-arrow-left-c" ng-click="goBack()"></button>
+  <h1 class="qb-title title">Qu<i class="ion-fork"></i>ckByte</h1>
+  <div class="header-options">
+    <button id="qb-settings" class="button button-icon icon ion-navicon-round" ng-controller="QbSettingsCtrl" ng-click="toggleRight($event)"></button>
+  </div>
+</ion-nav-header>
+<!-- Details -->
+<ion-view view-title="{{restaurant.name}}">
+  <ion-content padding="true" class="has-header no-tabs bkg-img">
+    <div class="card">
+      <h2 class="col-center">{{restaurant.name}}</h2>
+      <img src="{{restaurant.image_url}}" style="width: 25%; height: 25%; display: block; margin: 0px auto;">
+      <div class="row row-center">
+        <div class="col col-right restaurant-label">Name:</div>
+        <div class="col col-left">{{restaurant.name}}</div>
+      </div>
+      <div class="row row-center">
+        <div class="col col-right restaurant-label">Type:</div>
+        <div class="col col-left">{{foodCategories}}</div>
+      </div>
+      <!-- <div class="row row-center"><label class="col-right restaurant-label">Rating:</label> {{restaurant.rating}}</div> -->
+      <div class="row row-top">
+        <div class="col col-right restaurant-label">Address:</div>
+        <div class="col col-left">
+          <div class="row row-top" style="padding-left: 0px; padding-top: 0px">{{restaurant.location.address[0]}}</div>
+          <div class="row row-top" style="padding-left: 0px; padding-top: 0px">{{restaurant.location.city}}</div>
+        </div>
+      </div>
+      <div class="row row-top">
+        <div class="col col-right restaurant-label">Phone:</div>
+        <div class="col col-left">
+          {{restaurant.display_phone}}
+          <button class="button button-small button-outline icon ion-ios-telephone button-positive" style="margin-left: 4px" ng-controller="ConfirmCallCtrl" ng-click="showConfirm({{restaurant}})"></button>
+        </div>
+      </div>
+      <div class="row row-center">
+        <div class="col col-right restaurant-label">Status:</div>
+        <div class="col col-left" ng-if="restaurant.is_closed"><font color="red"><b>Closed</b></font></div>
+        <div class="col col-left" ng-if="!restaurant.is_closed"><font color="green"><b>Open</b></font></div>
+      </div>
+      <a class="button button-positive button-full" style="margin-top: 10px" href="#/tab/restaurants/{{restaurant.id}}/directions">Get Directions</a>
+      <button class="button button-balanced button-full" style="margin-top: 10px" ng-controller="RestaurantDetailCtrl" ng-click="sendPush({{restaurant}})">Notify my followers</button>
+    </div>
+    <ion-item type="item-text-wrap" href="#/tab/restaurants/{{restaurant.id}}/comments"><i class="icon ion-chatbubbles"></i> Comments</ion-item>
+  </ion-content>
+</ion-view>

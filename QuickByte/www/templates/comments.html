@@ -1,0 +1,41 @@
+<ion-nav-header class="bar-header bar-positive bar">
+  <button id="back-button" class="button button-icon icon ion-arrow-left-c" ng-click="goBack()"></button>
+  <h1 class="qb-title title">Qu<i class="ion-fork"></i>ckByte</h1>
+  <div class="header-options">
+    <button id="qb-settings" class="button button-icon icon ion-navicon-round" ng-controller="QbSettingsCtrl" ng-click="toggleRight($event)"></button>
+  </div>
+</ion-nav-header>
+<ion-view view-title="Comments">
+  <ion-item id="comment-create-box" scroll="false" class="item-remove-animate item-avatar item-icon-right card" style="margin-top: 7px; margin-bottom: 4px">
+    <img src="{{getUserImgUrl(currentUser)}}"></img>
+    <label class="item item-input">
+      <textarea id="comment-textarea" ng-model="data.comment" placeholder="Write a comment" maxlength="150"></textarea>
+    </label>
+    <button class="button icon ion-ios-chatbubble button-positive button-small" style="height: 50px; margin-top: 10px" ng-click="createComment()"></button>
+  </ion-item>
+  <ion-content id="comment-list-content" padding="true" class="has-header no-tabs bkg-img" can-swipe="true">
+    <ion-list style="margin-top: 60px">
+      <ion-item class="item-text-wrap card" ng-if="comments.length <= 0" style="margin-top: 5px; margin-bottom: 4px; text-align: center; padding: 10px" >
+        <p>No comments</p>
+        <i class="ion-sad-outline"></i>
+      </ion-item>
+      <ion-item class="item-text-wrap item-remove-animate item-avatar item-icon-right card" ng-repeat="comment in comments" style="margin-top: 5px; margin-bottom: 4px" >
+        <img src="{{getUserImgUrl(comment.get('userID')) }}"></img>
+        <div ng-click="goToProfile(comment.attributes.userID.id)">
+          <h2 class="comment-user" style="margin-top: 0px">{{comment.attributes.userID.attributes.username}} thinks: </h2>
+          <p class="comment-content">{{comment.attributes.text}}</p>
+          <div class="col-right"> <i id="thumbsup-{{comment.id}}" class="ion-thumbsup ion-green-icon">{{comment.attributes.thumbsUp}} </i>
+            <i id="thumbsdown-{{comment.id}}" class="ion-thumbsdown ion-red-icon">{{comment.attributes.thumbsDown}} </i></div>
+          <span class="comment-timestamp">{{comment.updatedAt.toDateString()}}</span>
+        </div>
+        <ion-option-button class="button-balanced"  ng-disabled="comment.get('usersThatHaveVoted').indexOf(currentUser.id) >= 0" ng-click="thumbsUp($index,comment.id)" ng-if="currentUser.id != comment.get('userID').id">
+          <i class="icon ion-thumbsup"></i>
+        </ion-option-button>
+        <ion-option-button class="button-assertive" ng-disabled="comment.get('usersThatHaveVoted').indexOf(currentUser.id) >= 0" ng-click="thumbsDown($index, comment.id)" ng-if="currentUser.id != comment.get('userID').id">
+          <i class="icon ion-thumbsdown"></i>
+        </ion-option-button>
+        <ion-option-button class="button-assertive" ng-click="deleteComment({{'comment.id'}}, $index)" ng-if="currentUser.id == comment.get('userID').id">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
